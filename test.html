@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animating DataTable</title>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <style>
+    /* Animación de desplazamiento de izquierda a derecha */
+    @keyframes slideInRow {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Establecer animación en función de la intersección */
+    tbody tr {
+      opacity: 0;
+      /* Inicialmente oculto */
+      transition: opacity 0.5s;
+      /* Suavizar transición */
+    }
+  </style>
+</head>
+
+<body>
+
+  <table id="example" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Age</th>
+        <th>Start date</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tiger Nixon</td>
+        <td>System Architect</td>
+        <td>Edinburgh</td>
+        <td>61</td>
+        <td>2011/04/25</td>
+        <td>$320,800</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <tr>
+        <td>Garrett Winters</td>
+        <td>Accountant</td>
+        <td>Tokyo</td>
+        <td>63</td>
+        <td>2011/07/25</td>
+        <td>$170,750</td>
+      </tr>
+      <!-- Otros datos -->
+    </tbody>
+  </table>
+
+  <div class="col-md-12 col-xl-4">
+    <div class="card support-bar overflow-hidden">
+      <div class="card-body pb-0">
+        <h2 class="m-0">350</h2>
+        <span class="text-c-blue">Support Requests</span>
+        <p class="mb-3 mt-3">Total number of support requests that come in.</p>
+      </div>
+      <div id="support-chart" style="min-height: 65px;">
+        <div id="apexchartsfrnuj37y" class="apexcharts-canvas apexchartsfrnuj37y light"
+          style="width: 574px; height: 65px;"><svg id="SvgjsSvg4933" width="574" height="65"
+            xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS"
+            transform="translate(0, 0)" style="background: transparent;">
+            <g id="SvgjsG4935" class="apexcharts-inner apexcharts-graphical" transform="translate(0, 0)">
+              <defs id="SvgjsDefs4934">
+                <clipPath id="gridRectMaskfrnuj37y">
+                  <rect id="SvgjsRect4939" width="576" height="67" x="-1" y="-1" rx="0" ry="0" fill="#ffffff"
+                    opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0"></rect>
+                </clipPath>
+                <clipPath id="gridRectMarkerMaskfrnuj37y">
+                  <rect id="SvgjsRect4940" width="576" height="67" x="-1" y="-1" rx="0" ry="0" fill="#ffffff"
+                    opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0"></rect>
+                </clipPath>
+                <linearGradient id="SvgjsLinearGradient4946" x1="0" y1="0" x2="0" y2="1">
+                  <stop id="SvgjsStop4947" stop-opacity="0.65" stop-color="rgba(26,188,156,0.65)" offset="0"></stop>
+                  <stop id="SvgjsStop4948" stop-opacity="0.5" stop-color="rgba(141,222,206,0.5)" offset="1"></stop>
+                  <stop id="SvgjsStop4949" stop-opacity="0.5" stop-color="rgba(141,222,206,0.5)" offset="1"></stop>
+                </linearGradient>
+              </defs>
+              <line id="SvgjsLine4938" x1="0" y1="0" x2="0" y2="65" stroke="#b6b6b6" stroke-dasharray="3"
+                class="apexcharts-xcrosshairs" x="0" y="0" width="1" height="65" fill="#b1b9c4" filter="none"
+                fill-opacity="0.9" stroke-width="1"></line>
+              <g id="SvgjsG4952" class="apexcharts-xaxis" transform="translate(0, 0)">
+                <g id="SvgjsG4953" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)"></g>
+              </g>
+              <g id="SvgjsG4956" class="apexcharts-grid">
+                <line id="SvgjsLine4958" x1="0" y1="65" x2="574" y2="65" stroke="transparent" stroke-dasharray="0">
+                </line>
+                <line id="SvgjsLine4957" x1="0" y1="1" x2="0" y2="65" stroke="transparent" stroke-dasharray="0"></line>
+              </g>
+              <g id="SvgjsG4942" class="apexcharts-area-series apexcharts-plot-series">
+                <g id="SvgjsG4943" class="apexcharts-series" seriesName="seriesx1" data:longestSeries="true" rel="1"
+                  data:realIndex="0">
+                  <path id="apexcharts-area-0"
+                    d="M 0 65L 0 65C 25.112499999999997 65 46.6375 43.333333333333336 71.75 43.333333333333336C 96.8625 43.333333333333336 118.3875 54.16666666666667 143.5 54.16666666666667C 168.6125 54.16666666666667 190.1375 16.25 215.25 16.25C 240.3625 16.25 261.8875 32.5 287 32.5C 312.1125 32.5 333.6375 5.416666666666671 358.75 5.416666666666671C 383.8625 5.416666666666671 405.3875 43.333333333333336 430.5 43.333333333333336C 455.6125 43.333333333333336 477.1375 32.5 502.25 32.5C 527.3625 32.5 548.8875 65 574 65C 574 65 574 65 574 65M 574 65z"
+                    fill="url(#SvgjsLinearGradient4946)" fill-opacity="1" stroke-opacity="1" stroke-linecap="butt"
+                    stroke-width="0" stroke-dasharray="0" class="apexcharts-area" index="0"
+                    clip-path="url(#gridRectMaskfrnuj37y)"
+                    pathTo="M 0 65L 0 65C 25.112499999999997 65 46.6375 43.333333333333336 71.75 43.333333333333336C 96.8625 43.333333333333336 118.3875 54.16666666666667 143.5 54.16666666666667C 168.6125 54.16666666666667 190.1375 16.25 215.25 16.25C 240.3625 16.25 261.8875 32.5 287 32.5C 312.1125 32.5 333.6375 5.416666666666671 358.75 5.416666666666671C 383.8625 5.416666666666671 405.3875 43.333333333333336 430.5 43.333333333333336C 455.6125 43.333333333333336 477.1375 32.5 502.25 32.5C 527.3625 32.5 548.8875 65 574 65C 574 65 574 65 574 65M 574 65z"
+                    pathFrom="M -1 65L -1 65L 71.75 65L 143.5 65L 215.25 65L 287 65L 358.75 65L 430.5 65L 502.25 65L 574 65">
+                  </path>
+                  <path id="apexcharts-area-0"
+                    d="M 0 65C 25.112499999999997 65 46.6375 43.333333333333336 71.75 43.333333333333336C 96.8625 43.333333333333336 118.3875 54.16666666666667 143.5 54.16666666666667C 168.6125 54.16666666666667 190.1375 16.25 215.25 16.25C 240.3625 16.25 261.8875 32.5 287 32.5C 312.1125 32.5 333.6375 5.416666666666671 358.75 5.416666666666671C 383.8625 5.416666666666671 405.3875 43.333333333333336 430.5 43.333333333333336C 455.6125 43.333333333333336 477.1375 32.5 502.25 32.5C 527.3625 32.5 548.8875 65 574 65"
+                    fill="none" fill-opacity="1" stroke="#1abc9c" stroke-opacity="1" stroke-linecap="butt"
+                    stroke-width="2" stroke-dasharray="0" class="apexcharts-area" index="0"
+                    clip-path="url(#gridRectMaskfrnuj37y)"
+                    pathTo="M 0 65C 25.112499999999997 65 46.6375 43.333333333333336 71.75 43.333333333333336C 96.8625 43.333333333333336 118.3875 54.16666666666667 143.5 54.16666666666667C 168.6125 54.16666666666667 190.1375 16.25 215.25 16.25C 240.3625 16.25 261.8875 32.5 287 32.5C 312.1125 32.5 333.6375 5.416666666666671 358.75 5.416666666666671C 383.8625 5.416666666666671 405.3875 43.333333333333336 430.5 43.333333333333336C 455.6125 43.333333333333336 477.1375 32.5 502.25 32.5C 527.3625 32.5 548.8875 65 574 65"
+                    pathFrom="M -1 65L -1 65L 71.75 65L 143.5 65L 215.25 65L 287 65L 358.75 65L 430.5 65L 502.25 65L 574 65">
+                  </path>
+                  <g id="SvgjsG4944" class="apexcharts-series-markers-wrap">
+                    <g class="apexcharts-series-markers">
+                      <circle id="SvgjsCircle4964" r="0" cx="0" cy="0"
+                        class="apexcharts-marker w1nsmhx25g no-pointer-events" stroke="#ffffff" fill="#1abc9c"
+                        fill-opacity="1" stroke-width="2" stroke-opacity="0.9" default-marker-size="0"></circle>
+                    </g>
+                  </g>
+                  <g id="SvgjsG4945" class="apexcharts-datalabels"></g>
+                </g>
+              </g>
+              <line id="SvgjsLine4959" x1="0" y1="0" x2="574" y2="0" stroke="#b6b6b6" stroke-dasharray="0"
+                stroke-width="1" class="apexcharts-ycrosshairs"></line>
+              <line id="SvgjsLine4960" x1="0" y1="0" x2="574" y2="0" stroke-dasharray="0" stroke-width="0"
+                class="apexcharts-ycrosshairs-hidden"></line>
+              <g id="SvgjsG4961" class="apexcharts-yaxis-annotations"></g>
+              <g id="SvgjsG4962" class="apexcharts-xaxis-annotations"></g>
+              <g id="SvgjsG4963" class="apexcharts-point-annotations"></g>
+            </g>
+            <rect id="SvgjsRect4937" width="0" height="0" x="0" y="0" rx="0" ry="0" fill="#fefefe" opacity="1"
+              stroke-width="0" stroke="none" stroke-dasharray="0"></rect>
+            <g id="SvgjsG4954" class="apexcharts-yaxis" rel="0" transform="translate(-21, 0)">
+              <g id="SvgjsG4955" class="apexcharts-yaxis-texts-g"></g>
+            </g>
+          </svg>
+          <div class="apexcharts-legend"></div>
+          <div class="apexcharts-tooltip light">
+            <div class="apexcharts-tooltip-series-group"><span class="apexcharts-tooltip-marker"
+                style="background-color: rgb(26, 188, 156);"></span>
+              <div class="apexcharts-tooltip-text" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px;">
+                <div class="apexcharts-tooltip-y-group"><span class="apexcharts-tooltip-text-label"></span><span
+                    class="apexcharts-tooltip-text-value"></span></div>
+                <div class="apexcharts-tooltip-z-group"><span class="apexcharts-tooltip-text-z-label"></span><span
+                    class="apexcharts-tooltip-text-z-value"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer bg-primary text-white">
+        <div class="row text-center">
+          <div class="col">
+            <h4 class="m-0 text-white">10</h4>
+            <span>Open</span>
+          </div>
+          <div class="col">
+            <h4 class="m-0 text-white">5</h4>
+            <span>Running</span>
+          </div>
+          <div class="col">
+            <h4 class="m-0 text-white">3</h4>
+            <span>Solved</span>
+          </div>
+        </div>
+      </div>
+      <div class="resize-triggers">
+        <div class="expand-trigger">
+          <div style="width: 575px; height: 272px;"></div>
+        </div>
+        <div class="contract-trigger"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).ready(function () {
+      // Inicializar DataTable
+      var table = $('#example').DataTable();
+
+      // Crear un observador de intersección
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, index) {
+          if (entry.isIntersecting) {
+            $(entry.target).css('opacity', 1);
+            $(entry.target).css('animation', 'slideInRow 0.5s ease forwards');
+            $(entry.target).css('animation-delay', (index * 0.1) + 's'); // Retraso progresivo
+            observer.unobserve(entry.target); // Dejar de observar después de la animación
+          }
+        });
+      }, { threshold: 0.5 }); // Detectar cuando la mitad de la fila está visible
+
+      // Observar todas las filas de la tabla
+      $('#example tbody tr').each(function () {
+        observer.observe(this);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
